@@ -1,6 +1,7 @@
 const express = require('express')
 const routes = require('./routes')
 const exphbs = require('express-handlebars')
+require('./config/mongoose')
 const app = express()
 const PORT = 3000
 
