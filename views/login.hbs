@@ -8,11 +8,11 @@
         <form action="/users/login" method="POST">
           <div class="input-group mb-3">
             <span class="input-group-text">@</span>
-            <input type="email" class="form-control" placeholder="Enter your email">
+            <input name="email" type="email" class="form-control" placeholder="Enter your email">
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text">#</span>
-            <input type="password" class="form-control" placeholder="Enter your password">
+            <input name="password" type="password" class="form-control" placeholder="Enter your password">
           </div>
           <button type="submit" class="btn btn-secondary me-2">Login</button>
           <span>No Account ? <a href="/users/register" class="text-decoration-none">Register</a></span>
@@ -21,14 +21,3 @@
     </div>
   </div>
 </div>
-{{!-- 
-<div class="card">
-  <div class="card-header">
-    Featured
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div> --}}
