@@ -5,22 +5,22 @@
         <h5 class="card-title text-center">Register</h5>
       </div>
       <div class="card-body">
-        <form action="/users/register" method="POST">
+        <form action="/users/register" method="POST" novalidate>
           <div class="input-group mb-3">
             <span class="input-group-text">N</span>
-            <input name="name" type="text" class="form-control" placeholder="Enter your name">
+            <input name="name" type="text" class="form-control" placeholder="Enter your name" maxlength="20" required>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text">@</span>
-            <input name="email" type="email" class="form-control" placeholder="Enter your email">
+            <input name="email" type="email" class="form-control" placeholder="Enter your email" maxlength="40" required>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text">#</span>
-            <input name="password" type="password" class="form-control" placeholder="Enter your password">
+            <input name="password" type="password" class="form-control" placeholder="Enter your password" maxlength="30" required>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text">#</span>
-            <input name="confirmPassword" type="password" class="form-control" placeholder="Enter your confirm password">
+            <input name="confirmPassword" type="password" class="form-control" placeholder="Enter your confirm password" maxlength="30" required>
           </div>
           <button type="submit" class="btn btn-secondary me-2">Register</button>
           <span>Have an Account ? <a href="/users/login" class="text-decoration-none">Login</a></span>
