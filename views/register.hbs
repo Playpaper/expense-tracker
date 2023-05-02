@@ -5,26 +5,41 @@
         <h5 class="card-title text-center">Register</h5>
       </div>
       <div class="card-body">
-        <form action="/users/register" method="POST" novalidate>
-          <div class="input-group mb-3">
-            <span class="input-group-text">N</span>
-            <input name="name" type="text" class="form-control" placeholder="Enter your name" maxlength="20" required>
+        <!--顯示錯誤訊息的程式碼-->
+        {{#each errorMessages}}
+        <div class="row">
+          <div class="col">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              {{ this.msg }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
           </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text">@</span>
-            <input name="email" type="email" class="form-control" placeholder="Enter your email" maxlength="40" required>
+        </div>
+        {{/each}}
+        <div class="row">
+          <div class="col">
+            <form action="/users/register" method="POST" novalidate>
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                <input name="name" type="text" class="form-control" placeholder="Enter your name" value="{{ name }}" required>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+                <input name="email" type="email" class="form-control" placeholder="Enter your email" value="{{ email }}" required>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
+                <input name="password" type="password" class="form-control" placeholder="Enter your password" value="{{ password }}" required>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
+                <input name="confirmPassword" type="password" class="form-control" placeholder="Enter your confirm password" value="{{ confirmPassword }}" required>
+              </div>
+              <button type="submit" class="btn btn-secondary me-2">Register</button>
+              <span>Have an Account ? <a href="/users/login" class="text-decoration-none">Login</a></span>
+            </form>
           </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text">#</span>
-            <input name="password" type="password" class="form-control" placeholder="Enter your password" maxlength="30" required>
-          </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text">#</span>
-            <input name="confirmPassword" type="password" class="form-control" placeholder="Enter your confirm password" maxlength="30" required>
-          </div>
-          <button type="submit" class="btn btn-secondary me-2">Register</button>
-          <span>Have an Account ? <a href="/users/login" class="text-decoration-none">Login</a></span>
-        </form>
+        </div>
       </div>
     </div>
   </div>
