@@ -16,6 +16,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^4.0.2",
+    "express-session": "^1.17.1",
     "express-validator": "^7.0.1",
     "mongoose": "^5.9.7"
   },
