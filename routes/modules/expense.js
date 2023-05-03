@@ -9,9 +9,10 @@ router.get('/new', (req, res) => {
 
 router.post('/new', (req, res) => {
   const { name, date, category, amount } = req.body
+  const userId = req.user._id
   Category.findOne({ name: category })
     .then(category => category._id)
-    .then(categoryId => Expense.create({ name, date, amount, categoryId }))
+    .then(categoryId => Expense.create({ name, date, amount, categoryId, userId }))
     .then(() => res.redirect('/'))
     .catch(console.error)
 })
