@@ -1,1 +1,25 @@
 <a href="/expense/new" class="btn btn-secondary">Create</a>
+<ul class="list-group">
+  {{#each data}}
+  <li class="list-group-item">
+    <div class="row">
+      <div class="col-2">
+        {{ this.categoryName}}
+      </div>
+      <div class="col-2">
+        {{ this.name }}
+      </div>
+      <div class="col-2">
+        {{ this.date }}
+      </div>
+      <div class="col-2">
+        {{ this.amount }}
+      </div>
+      <div class="col-2">
+        <a href="/expense/edit" class="btn btn-secondary">Edit</a>
+        <a href="/expense/delete" class="btn btn-secondary">Delete</a>
+      </div>
+    </div>
+  </li>
+  {{/each}}
+</ul>
