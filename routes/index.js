@@ -3,9 +3,10 @@ const router = express.Router()
 const home = require('./modules/home')
 const users = require('./modules/users')
 const expense = require('./modules/expense')
+const { authenticator } = require('../middleware/loginAuth')
 
-router.use('/expense', expense)
+router.use('/expense',authenticator , expense) // 加入驗證程序
 router.use('/users', users)
-router.use('/', home)
+router.use('/',authenticator, home) // 加入驗證程序
 
 module.exports = router
