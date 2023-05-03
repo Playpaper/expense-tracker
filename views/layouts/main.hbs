@@ -13,7 +13,11 @@
   <nav class="navbar bg-secondary">
     <div class="container">
       <a href="/" class="navbar-brand text-light fw-bold">家庭記帳本</a>
-      <a href="/users/login" class="btn btn-outline-light" >login</a>
+      {{#if isAuthenticated}}
+      <a href="/users/logout" class="btn btn-outline-light">logout</a>
+      {{else}}
+      <a href="/users/login" class="btn btn-outline-light">login</a>
+      {{/if}}
     </div>
   </nav>
   <div class="container mt-5">
