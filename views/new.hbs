@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-md-6 mx-auto">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title text-center">新增一筆支出</h5>
+      </div>
+      <div class="card-body">
+        <!--顯示錯誤訊息的程式碼-->
+        {{!-- {{#each errorMessages}}
+        <div class="row">
+          <div class="col">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              {{ this.msg }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          </div>
+        </div>
+        {{/each}} --}}
+        <div class="row">
+          <div class="col">
+            <form action="/expenses/new" method="POST" novalidate>
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="mx-auto fa-solid fa-paperclip"></i></span>
+                <input name="name" type="text" class="form-control" placeholder="Enter name of expense" value="{{ name }}"
+                  required>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="mx-auto fa-solid fa-calendar-days"></i></span>
+                <input name="date" type="date" class="form-control" required >
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="mx-auto fa-solid fa-list"></i></span>
+                <select class="form-select" required>
+                  <option value="">Open this select menu</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div>
+              
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="mx-auto fa-solid fa-dollar-sign"></i></span>
+                <input name="name" type="text" class="form-control" placeholder="Enter amount of expense" value="{{ money }}" required>
+              </div>
+              <button type="submit" class="btn btn-secondary me-2">Create</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
