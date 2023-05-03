@@ -2,6 +2,7 @@ const express = require('express')
 const routes = require('./routes')
 const exphbs = require('express-handlebars')
 const session = require('express-session')
+const usePassport = require('./config/passport')
 require('./config/mongoose')
 const app = express()
 const PORT = 3000
@@ -18,6 +19,9 @@ app.use(session({
   resave: false,
   saveUninitialized:true
 }))
+
+usePassport(app)
+
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 app.use(routes)
@@ -26,6 +30,4 @@ app.use(routes)
 app.listen(PORT, () => {
   console.log(`The express server is listening on http://localhost:${PORT}`)
 })
-
-
 

@@ -5,14 +5,14 @@
         <h5 class="card-title text-center">Login</h5>
       </div>
       <div class="card-body">
-        <form action="/users/login" method="POST">
+        <form action="/users/login" method="POST" novalidate>
           <div class="input-group mb-3">
             <span class="input-group-text">@</span>
-            <input name="email" type="email" class="form-control" placeholder="Enter your email">
+            <input name="email" type="email" class="form-control" placeholder="Enter your email" required>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text">#</span>
-            <input name="password" type="password" class="form-control" placeholder="Enter your password">
+            <input name="password" type="password" class="form-control" placeholder="Enter your password" required>
           </div>
           <button type="submit" class="btn btn-secondary me-2">Login</button>
           <span>No Account ? <a href="/users/register" class="text-decoration-none">Register</a></span>

@@ -2,11 +2,17 @@ const express = require('express')
 // const { body, validationResult  } = require('express-validator')
 const { body } = require('express-validator')
 const registerAuth = require('../../middleware/registerAuth')
+const passport = require('passport')
 const router = express.Router()
 
 router.get('/login', (req, res) => {
   res.render('login')
 })
+
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/users/login'
+}))
 
 router.get('/register', (req, res) => {
   res.render('register')
@@ -35,3 +41,4 @@ router.post('/register', [
 
 module.exports = router
 
+// routes/modules/users.js
