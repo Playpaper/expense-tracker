@@ -30,7 +30,7 @@
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text"><i class="mx-auto fa-solid fa-list"></i></span>
-                <select class="form-select" required>
+                <select name="category" class="form-select" required>
                   <option value="">Open this select menu</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
@@ -40,7 +40,7 @@
               
               <div class="input-group mb-3">
                 <span class="input-group-text"><i class="mx-auto fa-solid fa-dollar-sign"></i></span>
-                <input name="name" type="text" class="form-control" placeholder="Enter amount of expense" value="{{ money }}" required>
+                <input name="money" type="number" class="form-control" placeholder="Enter amount of expense" value="{{ money }}" required>
               </div>
               <button type="submit" class="btn btn-secondary me-2">Create</button>
             </form>
