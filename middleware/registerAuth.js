@@ -1,4 +1,5 @@
 const { validationResult } = require('express-validator')
+const User = require('../models/user')
 
 module.exports = registerAuth = (req, res) => {
   const { name, email, password, confirmPassword } = req.body
@@ -6,18 +7,22 @@ module.exports = registerAuth = (req, res) => {
   
   if (!errors.isEmpty()) { // 如果有錯誤訊息＝驗證失敗
     // 顯示驗證失敗的代號 422，渲染註冊頁面、錯誤訊息，並保留原本的使用者輸入
-    return res.status(422).render('register', {
-      errorMessages: errors.array(),
-      name, email, password, confirmPassword
-    })
+    return res.status(422).render('register', { ...req.body, errorMessages: errors.array() })
   }
   // 如果沒有錯誤訊息＝驗證成功，新增一筆使用者 Document 到 users collection 中
   console.log('confirm success')
-  // User.create({name, email, password })
-  //   .then(user => {
-  //     res.redirect('/')
-  //   })
-  //   .catch(err => console.log(err))
+
+  User.findOne({ email })
+    .then(user => {
+      if(user) {
+        const errorMessages = [{ msg: 'The email is already existed !' }]
+        res.render('register', {...req.body, errorMessages })
+      }
+      User.create({name, email, password })
+        .then(() => res.redirect('/users/login'))
+        .catch(console.error)
+    })
+    .catch(console.error)
 }
 
 // 將回傳的 Result 物件存在 errors 變數中
