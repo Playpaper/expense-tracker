@@ -1,0 +1,21 @@
+[
+  {
+    "name": "eat dinner",
+    "date": "2023-05-01",
+    "amount": "234",
+    "category": "餐飲食品"
+  },
+  {
+    "name": "KTV",
+    "date": "2023-05-01",
+    "amount": "399",
+    "category": "休閒娛樂"
+  }
+  ,
+  {
+    "name": "shopping",
+    "date": "2023-05-02",
+    "amount": "1200",
+    "category": "休閒娛樂"
+  }
+]
