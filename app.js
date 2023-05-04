@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars')
 const session = require('express-session')
 const usePassport = require('./config/passport')
 const flash = require('connect-flash')
+require("./public/javascripts/helpers");
 require('./config/mongoose')
 const app = express()
 const PORT = 3000

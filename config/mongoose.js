@@ -7,6 +7,7 @@ if (process.env.NODE_ENV !== 'production') {
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false, // PUT
   useCreateIndex: true // Schema 有設定 index: true
 })
 
@@ -17,12 +18,5 @@ db.once('open', () => console.log('mongodb connected !'))
 
 module.exports = db
 
-
-// mongoose.connect(process.env.MONGODB_URI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useFindAndModify: false,
-//   useCreateIndex: true
-// })
 
 

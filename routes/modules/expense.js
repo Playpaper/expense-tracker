@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const Category = require('../../models/category')
 const Expense = require('../../models/expense')
-const category = require('../../models/category')
 
 router.get('/new', (req, res) => {
   Category.find()
@@ -18,8 +17,8 @@ router.post('/new', (req, res) => {
 })
 
 router.get('/edit/:id', (req, res) => {
-  const categoryId = req.params.id
-  Expense.findOne({ categoryId })
+  const id = req.params.id
+  Expense.findById(id)
     .lean()
     .then(expense => {
       Category.findById(expense.categoryId)
@@ -36,18 +35,27 @@ router.get('/edit/:id', (req, res) => {
             console.log('expenseData = ', expenseData)
             res.render('edit', { ...expenseData, category })
           })
-          // .then(category => res.render('edit', { ...expenseData, category }))
         })
     })
 })
 
 router.put('/:id', (req, res) => {
+  const _id = req.params.id
+  const userId = req.user._id
+  const options = req.body
   
+  Expense.findOneAndUpdate({ _id, userId }, options)
+    .then(() => res.redirect('/'))
+    .catch(err => console.log(err))
 })
 
 router.delete('/:id', (req, res) => {
-  const categoryId = req.params.id
-  console.log('Delete categoryId = ', categoryId)
+  const _id = req.params.id
+  const userId = req.user._id
+  Expense.findOne({ _id, userId })
+    .then(item => item.remove())
+    .then(() => res.redirect('/'))
+    .catch(console.error)
 })
 
 module.exports = router
