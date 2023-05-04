@@ -16,8 +16,8 @@
         {{ this.amount }}
       </div>
       <div class="col-2">
-        <a href="/expense/edit" class="btn btn-secondary">Edit</a>
-        <a href="/expense/delete" class="btn btn-secondary">Delete</a>
+        <a href="/expense/edit/{{ this.categoryId }}" class="btn btn-secondary">Edit</a>
+        <a href="/expense/{{ this.categoryId }}?_method=Delete" class="btn btn-secondary">Delete</a>
       </div>
     </div>
   </li>

@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-6 mx-auto">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title text-center">新增一筆支出</h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <form action="/expense/new" method="POST" novalidate>
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="mx-auto fa-solid fa-paperclip"></i></span>
+                <input name="name" type="text" class="form-control" placeholder="Enter name of expense"
+                  value="{{ name }}" required>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="mx-auto fa-solid fa-calendar-days"></i></span>
+                <input name="date" type="date" class="form-control" required>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="mx-auto fa-solid fa-list"></i></span>
+                <select name="categoryId" class="form-select" required>
+                  <option value="">Open this select menu</option>
+                  {{#each category}}
+                  <option value="{{ this._id }}" >{{ this.name }}</option>
+                  {{/each}}
+                </select>
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="mx-auto fa-solid fa-dollar-sign"></i></span>
+                <input name="amount" type="number" class="form-control" placeholder="Enter amount of expense"
+                  value="{{ amount }}" required>
+              </div>
+              <button type="submit" class="btn btn-secondary me-2">Create</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<a href="/expense/{{ this.categoryId }}?_method=PUT" class="btn btn-secondary">Edit</a>
