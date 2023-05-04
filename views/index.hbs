@@ -3,7 +3,9 @@
   <span class="input-group-text"><i class="mx-auto fa-solid fa-list"></i></span>
   <select id="select-category" name="categoryId" class="form-select">
     <option value="">All</option>
-    {{> category}}
+    {{#each category}}
+    <option data-one="{{../categoryChoose}}" data-two="{{ this._id }}" value="{{ this._id }}" {{category ../categoryChoose this._id}}>{{ this.name }}</option>
+    {{/each}}
   </select>
 </div>
 <ul id="expense-panel" class="list-group">

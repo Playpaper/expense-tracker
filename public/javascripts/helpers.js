@@ -1,5 +1,5 @@
 const Handlebars = require('handlebars')
 
 Handlebars.registerHelper("category", function (selectedValue, valueName) {
-  return (selectedValue === valueName) ? "selected" : ""
+  return (String(selectedValue) === String(valueName)) ? "selected" : ""
 })
