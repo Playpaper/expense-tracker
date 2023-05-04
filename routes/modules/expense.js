@@ -4,15 +4,14 @@ const Category = require('../../models/category')
 const Expense = require('../../models/expense')
 
 router.get('/new', (req, res) => {
-  res.render('new')
+  Category.find()
+    .lean()
+    .then(category => res.render('new', { category }))
 })
 
 router.post('/new', (req, res) => {
-  const { name, date, category, amount } = req.body
   const userId = req.user._id
-  Category.findOne({ name: category })
-    .then(category => category._id)
-    .then(categoryId => Expense.create({ name, date, amount, categoryId, userId }))
+  Expense.create({ ...req.body, userId })
     .then(() => res.redirect('/'))
     .catch(console.error)
 })

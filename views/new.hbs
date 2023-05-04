@@ -30,13 +30,11 @@
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text"><i class="mx-auto fa-solid fa-list"></i></span>
-                <select name="category" class="form-select" required>
+                <select name="categoryId" class="form-select" required>
                   <option value="">Open this select menu</option>
-                  <option value="家居物業">家居物業</option>
-                  <option value="交通出行">交通出行</option>
-                  <option value="休閒娛樂">休閒娛樂</option>
-                  <option value="餐飲食品">餐飲食品</option>
-                  <option value="其他">其他</option>
+                  {{#each category}}
+                  <option value="{{ this._id }}">{{ this.name }}</option>
+                  {{/each}}
                 </select>
               </div>
               
