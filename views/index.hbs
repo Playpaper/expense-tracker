@@ -1,10 +1,17 @@
 <a href="/expense/new" class="btn btn-secondary">Create</a>
+<div class="input-group mb-3">
+  <span class="input-group-text"><i class="mx-auto fa-solid fa-list"></i></span>
+  <select id="select-category" name="categoryId" class="form-select">
+    <option value="">All</option>
+    {{> category}}
+  </select>
+</div>
 <ul id="expense-panel" class="list-group">
   {{#each data}}
   <li class="list-group-item">
     <div class="row">
       <div class="col-2">
-        {{ this.categoryName}}
+        {{ this.categoryId.name}}
       </div>
       <div class="col-2">
         {{ this.name }}

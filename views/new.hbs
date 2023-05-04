@@ -32,9 +32,7 @@
                 <span class="input-group-text"><i class="mx-auto fa-solid fa-list"></i></span>
                 <select name="categoryId" class="form-select" required>
                   <option value="">Open this select menu</option>
-                  {{#each category}}
-                  <option value="{{ this._id }}">{{ this.name }}</option>
-                  {{/each}}
+                  {{> category}}
                 </select>
               </div>
               
