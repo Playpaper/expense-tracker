@@ -12,3 +12,10 @@ expensePanel.addEventListener('click', (e) => {
     modalBody.textContent = e.target.dataset.name
   }
 })
+
+const selectCategory = document.querySelector('#select-category')
+
+selectCategory.addEventListener('input', (e) => {
+  const category = e.target.value
+  window.location.href = `/search?category=${category}`
+})

@@ -19,24 +19,15 @@ router.post('/new', (req, res) => {
 router.get('/edit/:id', (req, res) => {
   const id = req.params.id
   Expense.findById(id)
+    .populate('categoryId')
     .lean()
     .then(expense => {
-      Category.findById(expense.categoryId)
+      Category.find()
         .lean()
-        .then(category => {
-          const categoryName = category.name
-          const expenseData = {...expense, categoryName }
-          return expenseData
-        })
-        .then(expenseData => {
-          Category.find()
-          .lean()
-          .then(category => {
-            console.log('expenseData = ', expenseData)
-            res.render('edit', { ...expenseData, category })
-          })
-        })
+        .then(category => res.render('edit', { ...expense, category }))
+        .catch(err => console.log(err))
     })
+    .catch(err => console.log(err))  
 })
 
 router.put('/:id', (req, res) => {
