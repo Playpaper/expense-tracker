@@ -7,7 +7,7 @@ module.exports = registerAuth = (req, res) => {
   
   if (!errors.isEmpty()) { // 如果有錯誤訊息＝驗證失敗
     // 顯示驗證失敗的代號 422，渲染註冊頁面、錯誤訊息，並保留原本的使用者輸入
-    return res.status(422).render('register', { ...req.body, errorMessages: errors.array() })
+    return res.status(422).render('register', { ...req.body, register_msg: errors.array() })
   }
   // 如果沒有錯誤訊息＝驗證成功，新增一筆使用者 Document 到 users collection 中
   console.log('confirm success')
@@ -15,8 +15,8 @@ module.exports = registerAuth = (req, res) => {
   User.findOne({ email })
     .then(user => {
       if(user) {
-        const errorMessages = [{ msg: 'The email is already existed !' }]
-        res.render('register', {...req.body, errorMessages })
+        const register_msg = [{ msg: 'The email is already existed !' }]
+        res.render('register', {...req.body, register_msg })
       }
       User.create({name, email, password })
         .then(() => res.redirect('/users/login'))

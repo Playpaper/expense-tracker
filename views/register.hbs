@@ -5,17 +5,7 @@
         <h5 class="card-title text-center">Register</h5>
       </div>
       <div class="card-body">
-        <!--顯示錯誤訊息的程式碼-->
-        {{#each errorMessages}}
-        <div class="row">
-          <div class="col">
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-              {{ this.msg }}
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-          </div>
-        </div>
-        {{/each}}
+        {{> message}}
         <div class="row">
           <div class="col">
             <form action="/users/register" method="POST" novalidate>

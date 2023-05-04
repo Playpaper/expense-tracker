@@ -1,0 +1,44 @@
+<!--顯示錯誤訊息的程式碼-->
+{{#if warning_msg}}
+<div class="row">
+  <div class="col">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{ warning_msg }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+{{/if}}
+
+{{#if success_msg}}
+<div class="row">
+  <div class="col">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      {{ success_msg }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+{{/if}}
+
+{{#if login_error}}
+<div class="row">
+  <div class="col">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{ login_error }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+{{/if}}
+
+{{#each register_msg}}
+<div class="row">
+  <div class="col">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{ this.msg }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+{{/each}}
