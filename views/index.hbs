@@ -1,5 +1,6 @@
 <a href="/expense/new" class="btn btn-secondary">Create</a>
-<div class="input-group mb-3">
+<p class="my-3">Total : <span>{{ amountSum }}</span></p>
+<div class="input-group my-3">
   <span class="input-group-text"><i class="mx-auto fa-solid fa-list"></i></span>
   <select id="select-category" name="categoryId" class="form-select">
     <option value="">All</option>
@@ -8,6 +9,9 @@
     {{/each}}
   </select>
 </div>
+{{#each date}}
+{{ this.yearMonthDayUTC }}
+{{/each}}
 <ul id="expense-panel" class="list-group">
   {{#each data}}
   <li class="list-group-item">
@@ -19,7 +23,7 @@
         {{ this.name }}
       </div>
       <div class="col-2">
-        {{ this.date }}
+        {{ this.dateFormat }}
       </div>
       <div class="col-2">
         {{ this.amount }}
