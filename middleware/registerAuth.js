@@ -1,4 +1,5 @@
 const { validationResult } = require('express-validator')
+const bcrypt = require('bcryptjs')
 const User = require('../models/user')
 
 module.exports = registerAuth = (req, res) => {
@@ -7,20 +8,23 @@ module.exports = registerAuth = (req, res) => {
   
   if (!errors.isEmpty()) { // 如果有錯誤訊息＝驗證失敗
     // 顯示驗證失敗的代號 422，渲染註冊頁面、錯誤訊息，並保留原本的使用者輸入
-    return res.status(422).render('register', { ...req.body, register_msg: errors.array() })
+    return res.render('register', { ...req.body, register_msg: errors.array() })
+    // return res.status(422).render('register', { ...req.body, register_msg: errors.array() })
   }
-  // 如果沒有錯誤訊息＝驗證成功，新增一筆使用者 Document 到 users collection 中
-  console.log('confirm success')
 
+  // 如果沒有錯誤訊息＝驗證成功，新增一筆使用者 Document 到 users collection 中
   User.findOne({ email })
     .then(user => {
       if(user) {
         const register_msg = [{ msg: 'The email is already existed !' }]
         res.render('register', {...req.body, register_msg })
       }
-      User.create({name, email, password })
-        .then(() => res.redirect('/users/login'))
-        .catch(console.error)
+      bcrypt
+        .genSalt(10)
+        .then(salt => bcrypt.hash(password, salt))
+        .then(hash => User.create({name, email, password: hash })
+        .then(() => res.redirect('/'))
+        .catch(console.error))
     })
     .catch(console.error)
 }
