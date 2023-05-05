@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
         .lean()
         .then(data => {
           if(!data.length){
-            res.render('index', { data, category, amountSum: 0 })
+            return res.render('index', { data, category, amountSum: 0 })
           }
           const Expensedata = data
           Expense.aggregate([{$group: { _id: null, total: {$sum :"$amount"}}}])

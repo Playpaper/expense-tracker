@@ -6,6 +6,4 @@ form.addEventListener('submit', (e) => {
     e.preventDefault()
   }
   e.target.classList.add('was-validated')
-  console.log('submit')
-
 })
