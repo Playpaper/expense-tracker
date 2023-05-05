@@ -22,7 +22,6 @@ router.get('/', (req, res) => {
         .then(data => {
           // console.log('expense data = ', data)
           if (!data.length) {
-            console.log('no data ', data)
             return res.render('index', { category, categoryChoose, amountSum: 0 })
           }
           const Expensedata = data
