@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const mongoose = require('mongoose')
 const Expense = require('../../models/expense')
 const Category = require('../../models/category')
 
@@ -16,7 +17,8 @@ router.get('/', (req, res) => {
             return res.render('index', { data, category, amountSum: 0 })
           }
           const Expensedata = data
-          Expense.aggregate([{$group: { _id: null, total: {$sum :"$amount"}}}])
+          const ObjectId = mongoose.Types.ObjectId
+          Expense.aggregate([{$match: {userId: ObjectId(userId)}},{$group: { _id: null, total: {$sum :"$amount"}}}])
             .then(amountSum => {
               return Expense.aggregate([{$project: { yearMonthDayUTC: { $dateToString: { format: "%Y-%m-%d", date: "$date" }}}}]
               )
