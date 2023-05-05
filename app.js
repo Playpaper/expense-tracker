@@ -8,7 +8,7 @@ const flash = require('connect-flash')
 require("./public/javascripts/helpers");
 require('./config/mongoose')
 const app = express()
-const PORT = 3000
+const PORT = Number(process.env.PORT || 3000)
 
 app.engine('hbs', exphbs({
   defaultLayout: 'main',

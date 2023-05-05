@@ -3,37 +3,6 @@ const router = express.Router()
 const Expense = require('../../models/expense')
 const Category = require('../../models/category')
 
-// router.get('/', (req, res) => {
-//   const userId = req.user._id
-//   Expense.find({ userId })
-//     .lean()
-//     .then(items => {
-//       Promise.all(
-//         items.map(item => {
-//         return Category.findById(item.categoryId)
-//           .lean()
-//           .then(category => category.name)
-//           .then(categoryName => {
-//             item.categoryName = categoryName
-//             return item
-//           })
-//         })
-//       )
-//       .then(data => {
-//         return Category.find()
-//           .lean()
-//           .then(category => {
-//             console.log('category = ', category)
-//             console.log('data = ', data)
-//             res.render('index', { data, category })
-//           })
-//       })
-//       .catch(console.error)
-//     })
-//     .catch(console.error)
-// })
-
-
 router.get('/', (req, res) => {
   const userId = req.user._id
   Category.find()
@@ -43,6 +12,9 @@ router.get('/', (req, res) => {
         .populate('categoryId')
         .lean()
         .then(data => {
+          if(!data.length){
+            res.render('index', { data, category, amountSum: 0 })
+          }
           const Expensedata = data
           Expense.aggregate([{$group: { _id: null, total: {$sum :"$amount"}}}])
             .then(amountSum => {
