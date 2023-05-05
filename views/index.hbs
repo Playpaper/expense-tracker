@@ -17,19 +17,19 @@
       {{#each data}}
       <li class="list-group-item ">
         <div class="row">
-          <div class="col-2 d-flex justify-content-center">
-            {{ this.categoryId.name}}
+          <div class="col-2 d-flex justify-content-center align-items-center">
+            <i class="mx-auto fa-solid {{ this.categoryId.icon }}"></i>
           </div>
-          <div class="col-2 d-flex justify-content-center">
+          <div class="col-2 d-flex justify-content-center align-items-center">
             {{ this.name }}
           </div>
-          <div class="col-2 d-flex justify-content-center">
+          <div class="col-2 d-flex justify-content-center align-items-center">
             {{ this.dateFormat }}
           </div>
-          <div class="col-2 d-flex justify-content-center">
+          <div class="col-2 d-flex justify-content-center align-items-center">
             ${{ this.amount }}
           </div>
-          <div class="col-4 d-flex justify-content-center">
+          <div class="col-4 d-flex justify-content-center align-items-center">
             <a href="/expense/edit/{{ this._id }}" class="btn btn-secondary mx-2">Edit</a>
             <!-- Button trigger modal -->
             <button data-name="{{ this.name }}" data-id="{{ this._id }}" type="button" class="btn btn-secondary mx-2" data-bs-toggle="modal" data-bs-target="#deleteModal">
