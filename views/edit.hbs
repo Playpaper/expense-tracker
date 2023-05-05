@@ -11,7 +11,7 @@
               <div class="input-group mb-3">
                 <span class="input-group-text"><i class="mx-auto fa-solid fa-paperclip"></i></span>
                 <input name="name" type="text" class="form-control" placeholder="Enter name of expense"
-                  value="{{ name }}" required>
+                  value="{{ name }}" maxlength="20" required>
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text"><i class="mx-auto fa-solid fa-calendar-days"></i></span>
@@ -30,7 +30,7 @@
               <div class="input-group mb-3">
                 <span class="input-group-text"><i class="mx-auto fa-solid fa-dollar-sign"></i></span>
                 <input name="amount" type="number" class="form-control" placeholder="Enter amount of expense"
-                  value="{{ amount }}" required>
+                  value="{{ amount }}" maxlength="20" required>
               </div>
               <div class="justify-content-center d-flex mt-4">
                 <button type="submit" class="btn btn-outline-secondary px-3 fs-5">送出</button>

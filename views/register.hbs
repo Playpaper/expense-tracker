@@ -11,19 +11,19 @@
             <form action="/users/register" method="POST" novalidate>
               <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
-                <input name="name" type="text" class="form-control" placeholder="Enter your name" value="{{ name }}" required>
+                <input name="name" type="text" class="form-control" placeholder="Enter your name" value="{{ name }}" maxlength="30" required>
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
-                <input name="email" type="email" class="form-control" placeholder="Enter your email" value="{{ email }}" required>
+                <input name="email" type="email" class="form-control" placeholder="Enter your email" value="{{ email }}" maxlength="30" required>
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
-                <input name="password" type="password" class="form-control" placeholder="Enter your password" value="{{ password }}" required>
+                <input name="password" type="password" class="form-control" placeholder="Enter your password" value="{{ password }}" maxlength="30" required>
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
-                <input name="confirmPassword" type="password" class="form-control" placeholder="Enter your confirm password" value="{{ confirmPassword }}" required>
+                <input name="confirmPassword" type="password" class="form-control" placeholder="Enter your confirm password" value="{{ confirmPassword }}" maxlength="30" required>
               </div>
               <button type="submit" class="btn btn-secondary me-2">Register</button>
               <span>Have an Account ? <a href="/users/login" class="text-decoration-none">Login</a></span>
