@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   const userId = req.user._id
   const categoryChoose = req.query.category
 
-  if(!categoryChoose){
+  if (!categoryChoose){
     return res.redirect('/')  
   }
   Category.find()
@@ -20,6 +20,11 @@ router.get('/', (req, res) => {
         .populate('categoryId')
         .lean()
         .then(data => {
+          // console.log('expense data = ', data)
+          if (!data.length) {
+            console.log('no data ', data)
+            return res.render('index', { category, categoryChoose, amountSum: 0 })
+          }
           const Expensedata = data
           const ObjectId = mongoose.Types.ObjectId
           Expense.aggregate([{$match: {categoryId: ObjectId(categoryChoose)}}, {$group: { _id: null, total: {$sum :"$amount"}}}])
@@ -35,6 +40,7 @@ router.get('/', (req, res) => {
                 .then(data => res.render('index', { data, category, categoryChoose, amountSum: amountSum[0].total }))
               })
             })
+          
         })
         .catch(console.error)
     })
@@ -42,20 +48,3 @@ router.get('/', (req, res) => {
 
 })
 module.exports = router
-
-  // .then(data => {
-  //   const Expensedata = data
-  //   Expense.aggregate([{$group: { _id: null, total: {$sum :"$amount"}}}])
-  //     .then(amountSum => {
-  //       return Expense.aggregate([{$project: { yearMonthDayUTC: { $dateToString: { format: "%Y-%m-%d", date: "$date" }}}}]
-  //       )
-  //       .then(date => {
-  //         Promise.all(Expensedata.map((item, index) => {
-  //             const dateFormat = { dateFormat: date[index]['yearMonthDayUTC'] }
-  //             return Object.assign(item, dateFormat)
-  //           })
-  //         )
-  //         .then(data => res.render('index', { data, category, amountSum: amountSum[0].total }))
-  //       })
-  //     })
-  // })

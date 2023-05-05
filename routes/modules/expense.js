@@ -24,7 +24,11 @@ router.get('/edit/:id', (req, res) => {
     .then(expense => {
       Category.find()
         .lean()
-        .then(category => res.render('edit', { ...expense, category }))
+        .then(category => {
+          Expense.aggregate([{$match: {_id: expense._id}}, {$project: { yearMonthDayUTC: { $dateToString: { format: "%Y-%m-%d", date: "$date" }}}}]
+          )
+          .then(dateFormat => res.render('edit', { ...expense, category, dateFormat: dateFormat[0]['yearMonthDayUTC'] }))
+        })
         .catch(err => console.log(err))
     })
     .catch(err => console.log(err))  
